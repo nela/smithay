@@ -28,6 +28,7 @@ use std::{
 use wayland_server::{Resource, backend::ObjectId};
 
 use crate::{
+    backend::allocator::dmabuf::Dmabuf,
     output::{Output, WeakOutput},
     utils::{Buffer as BufferCoords, Physical, Point, Rectangle, Scale, Transform, user_data::UserDataMap},
 };
@@ -256,6 +257,8 @@ pub enum UnderlyingStorage<'a> {
     Wayland(&'a Buffer),
     /// A memory backed buffer
     Memory(&'a memory::MemoryBuffer),
+
+    Dmabuf(&'a Dmabuf),
 }
 
 /// Defines the (optional) reason why a [`Element`] was selected for
